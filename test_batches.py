@@ -1,4 +1,4 @@
-from datetime import date
+"""from datetime import date
 from model import Batch, OrderLine
 
 
@@ -56,3 +56,15 @@ def test_can_only_deallocate_allocated_lines():
     batch, unallocated_line = make_batch_and_line("DECORATIVE-TRINKET", 20, 2)
     batch.deallocate(unallocated_line)
     assert batch.available_quantity == 20
+""" 
+    # a first test for allocation
+from datetime import date
+from model import Batch, OrderLine
+
+def test_allocating_to_a_batch_reduces_the_available_quantity():
+    batch = Batch("batch-001", "SMALL-TABLE", qty=20, eta=date.today())
+    line = Orderline('order-ref', "SMALL-TABLE", 2)
+    
+    batch.allocate(line)
+    
+    assert batch.available_quantity == 18
