@@ -71,6 +71,7 @@ class Batch:
 """ 
 # first cut of a domain model for batches
 from dataclasses import dataclass
+from sre_constants import BRANCH
 from typing import Optional, List, Set
 from datetime import date
 
@@ -143,3 +144,6 @@ class Batch:
     
     def can_allocate(self, line: OrderLine) -> bool:
         return self.sku == line.sku and self.available_quantity >= line.qty 
+    
+    #I am typing to create the BRANCH
+    
